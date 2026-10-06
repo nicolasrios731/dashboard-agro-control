@@ -1,0 +1,231 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.85);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-blue: #38bdf8;
+  --status-ok: #22c55e;
+  --status-warn: #eab308;
+  --status-danger: #ef4444;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  /* Imagen por defecto con overlay oscuro para contraste */
+  background-image: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                    url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 0.5s ease-in-out;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+  color: var(--text-main);
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-muted);
+  padding: 12px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: var(--accent-blue);
+  border-left: 3px solid var(--accent-blue);
+}
+
+/* Contenido Principal */
+.content {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Control de Secciones Ocultas / Visibles */
+.seccion-pagina {
+  display: none;
+  width: 100%;
+}
+
+.seccion-pagina.active {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Header de la sección */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.header-title h1 {
+  font-size: 1.5rem;
+}
+
+.header-title p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--status-ok);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--status-ok);
+  font-weight: bold;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-ok);
+  box-shadow: 0 0 8px var(--status-ok);
+}
+
+/* Tarjetas KPI */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.kpi-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-title {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.kpi-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.kpi-value small {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.kpi-status {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.kpi-status.normal { color: var(--status-ok); }
+.kpi-status.warning { color: var(--status-warn); }
+.kpi-status.danger { color: var(--status-danger); }
+
+/* Tabla de eventos */
+.events-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.events-section h2 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th, .data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.85rem;
+}
+
+.data-table th {
+  color: var(--text-muted);
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.badge.ok {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--status-ok);
+}
+
+.badge.alert {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--status-warn);
+}

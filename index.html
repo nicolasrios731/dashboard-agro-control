@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Telemetría Industrial - SCADA & IoT</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Menú lateral izquierdo -->
+    <aside class="sidebar">
+      <h2>SCADA Tech</h2>
+      <nav>
+        <button class="nav-btn active" onclick="cambiarSeccion('dashboard', 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920', event)">
+          📊 Monitoreo
+        </button>
+        <button class="nav-btn" onclick="cambiarSeccion('nosotros', 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1920', event)">
+          🏢 Empresa
+        </button>
+        <button class="nav-btn" onclick="cambiarSeccion('servicios', 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1920', event)">
+          🛠️ Servicios
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="content">
+      <!-- Sección 1: Telemetría / Monitoreo SCADA -->
+      <section id="dashboard" class="seccion-pagina active">
+        <header class="top-header">
+          <div class="header-title">
+            <h1>Monitoreo Operativo de Yacimientos</h1>
+            <p>Supervisión en Tiempo Real | Telemetría IoT v2.4</p>
+          </div>
+          <div class="system-status">
+            <span class="status-dot"></span>
+            <span id="api-status-text">API CONECTADA</span>
+          </div>
+        </header>
+
+        <!-- Tarjetas de Métricas (KPIs) -->
+        <section class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-title">Presión General - Pozo #4</span>
+            <div class="kpi-value" id="kpi-presion">-- <small>PSI</small></div>
+            <span class="kpi-status normal" id="status-presion">Estable</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-title">Temperatura de Cabezal</span>
+            <div class="kpi-value" id="kpi-temp">-- <small>°C</small></div>
+            <span class="kpi-status normal" id="status-temp">Rango Normal</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-title">Flujo Diario Estimado</span>
+            <div class="kpi-value" id="kpi-flujo">-- <small>BPD</small></div>
+            <span class="kpi-status normal">Medición Continua</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-title">Unidades Operativas</span>
+            <div class="kpi-value" id="kpi-flota">18 / 20</div>
+            <span class="kpi-status normal">90% Disponibilidad</span>
+          </div>
+        </section>
+
+        <!-- Tabla de Eventos en Tiempo Real -->
+        <section class="events-section">
+          <h2>Registro de Lecturas Recibidas (Servidor Node.js)</h2>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Ubicación / Pozo</th>
+                <th>Presión (PSI)</th>
+                <th>Temperatura (°C)</th>
+                <th>Estado del Sistema</th>
+              </tr>
+            </thead>
+            <tbody id="table-telemetry-body">
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--text-muted);">Cargando telemetría desde el servidor...</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+
+      <!-- Sección 2: Información de la Empresa -->
+      <section id="nosotros" class="seccion-pagina" style="display: none;">
+        <h1>Sobre Nuestra Compañía</h1>
+        <p>Proveemos soluciones de telemetría industrial y monitoreo de pozos petrolíferos en tiempo real con arquitectura en la nube.</p>
+      </section>
+
+      <!-- Sección 3: Servicios Industriales -->
+      <section id="servicios" class="seccion-pagina" style="display: none;">
+        <h1>Nuestros Servicios Industriales</h1>
+        <p>Integración de sensores, paneles SCADA a medida, APIs REST personalizadas y análisis de datos.</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="./frontend.js"></script>
+</body>
+</html>
